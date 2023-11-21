@@ -1,0 +1,1 @@
+g++ .\select_move_delete.cpp -I C:\msys2\mingw64\include\ -L C:\msys2\mingw64\lib\ -lsfml-graphics -lsfml-window -lsfml-system
