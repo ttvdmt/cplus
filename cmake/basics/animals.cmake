@@ -1,0 +1,51 @@
+cmake_minimum_required(VERSION 3.20)
+
+set(animals "cat;mouse;dog;elephant;tiger;lion;axolotl;hippo;squirrel;wolf;shark;whale;bee;sloth;sheep;giraffe;scorpion")
+
+message("\nСписок зверей:")
+foreach(elem ${animals})
+  message("${elem}")
+endforeach()
+
+message("\nКоличество зверей:")
+list(LENGTH animals count)
+message("${count}")
+
+message("\nЗвери меньше 4:")
+foreach(elem ${animals})
+  string(LENGTH "${elem}" lem)
+  if(${lem} GREATER 4)
+    message("${elem}")
+  endif()
+endforeach()
+
+message("\nЗвери на s:")
+foreach(elem ${animals})
+  string(SUBSTRING "${elem}" 0 1 first)
+  if("${first}" STREQUAL "s")
+    message("${elem}")
+  endif()
+endforeach()
+
+message("\nОтсортированный список:")
+list(SORT animals)
+foreach(elem ${animals})
+  message("${elem}")
+endforeach()
+
+message("\nЗвери через пробел:")
+string(REPLACE ";" " " line ${animals})
+message(${line})
+
+message("\nЗапись зверей в файл:")
+file(WRITE data.txt "")
+foreach(elem ${animals})
+  file(APPEND data.txt "${elem}\n")
+endforeach()
+
+message("\nСоздание txt со зверями:")
+file(MAKE_DIRECTORY animal_files)
+foreach(elem ${animals})
+  string(REPLACE ";" "" name "${elem}")
+  file(WRITE animal_files/${name}.txt "")
+endforeach()

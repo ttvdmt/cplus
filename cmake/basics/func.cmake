@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.20)
+
+function(func)
+	message("Number of arguments = " $ARGC)
+	message("Arguments:")
+	foreach(arg IN LISTS ARGV)
+		message(&arg)
+	endforeach()
+	message("-----")
+endfunction()
+
+set(X "Tiger;Lion;Elephant")
+
+func()
+func(Cat)
+func(Cat Mouse Dog)
+func("Cat Mouse Dog")
+func(Cat;Mouse;Dog)
+func("Cat;Mouse;Dog")
+func(X)
+func($X)
+func("$X")
+func("Cat;Mouse;Dog" "$X")

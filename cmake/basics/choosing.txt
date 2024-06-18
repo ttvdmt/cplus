@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.20)
+project(AnimalsProject)
+
+if(NOT DEFINED ANIMAL_TYPE)
+  message(FATAL_ERROR)
+endif()
+
+if(NOT "${ANIMAL_TYPE}" IN_LIST "Cat" "Dog" "Mouse")
+  message(FATAL_ERROR)
+endif()
+
+set(SOURCE_FILE src/${ANIMAL_TYPE}.cpp)
+add_executable(4choosing ${SOURCE_FILE})
+message("${SOURCE_FILE}")
